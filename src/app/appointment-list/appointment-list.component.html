@@ -1,12 +1,35 @@
-<div>
-  <input type="text" [(ngModel)]="appointmentTitle" placeholder="Appointment description" />
-  <input type="date" [(ngModel)]="appointmentDate" placeholder="Appointment date" />
-  <button (click)="addAppointment()">Add</button>
-</div>
+<div class="container mt-5">
+  <div class="card mb-5">
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col">
+          <h2 class="text-center">Create new appointment</h2>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <input type="text" class="form-control" [(ngModel)]="appointmentTitle" placeholder="Appointment description" />
+        </div>
+        <div class="col-md-4 mb-3 mb-md-0">
+          <input type="date" class="form-control" [(ngModel)]="appointmentDate" placeholder="Appointment date" />
+        </div>
+        <div class="col-md-2 mb-3 mb-md-0">
+          <button class="btn btn-primary w-100" (click)="addAppointment()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<ul>
-  <li *ngFor="let appointment of appointments; index as i">
-    {{appointment.title}} : {{appointment.date | date:'dd.MM.yyyy'}}
-    <button (click)="deleteAppointment(i)">Delete</button>
-  </li>
-</ul>
+  <div>
+    <h2 class="text-center">Appointments</h2>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let appointment of appointments; index as i">
+        <div class="row d-flex align-items-center">
+          <div class="col-md-6">{{appointment.title}}</div>
+          <div class="col-md-4">{{appointment.date | date:'dd.MM.yyyy'}}</div>
+          <button class="btn btn-danger col-md-2" (click)="deleteAppointment(i)">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
